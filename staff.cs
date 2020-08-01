@@ -7,12 +7,11 @@ class Staff
   public string email{get;set;}
   public string classname{get;set;}
   public string subject{get;set;}
-  public int id{get;set;}
+  
  
   
   
   public void display(){
-    Console.WriteLine("\nSTAFF ID:{0}",id);
     Console.WriteLine("Staff :{0}",stafftype);
     Console.WriteLine("Name :{0}",name);
     Console.WriteLine("Phone no :{0}",phone);
