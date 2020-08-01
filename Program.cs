@@ -1,51 +1,76 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 namespace staffs
 {
+       enum stafftype
+      {
+            TEACHING_STAFF ,
+            ADMINISTRATIVE_STAFF,
+            SUPPORT_STAFF
+      }
     class Program
     {
         static void Main(string[] args)
         {
             List<Staff> lst= new List<Staff>{};
-            int select;
+            string select;
             do
             {
               Console.WriteLine("\nENTER '1' FOR DATA ENTRY\nENTER '2' TO VIEW  DETAILS OF ALL STAFF\nENTER '3' TO VIEW STAFF DETAILS IN SPECIFIC\nENTER '4' TO DELETE STAFF DETAILS\nENTER '5' TO UPDATE STAFF DETAILS \nENTER '9' TO EXIT");
-              select=Convert.ToInt32(Console.ReadLine());
+              select=Console.ReadLine();
               switch(select){
-                case 1:
+                case "1":
+                     Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
+                     string st=Console.ReadLine();   
+                     if(st!= "1"&&st!="2"&&st!="3"){
+                        goto default;  
+                     }
+                     string j=Convert.ToString((stafftype)int.Parse(st)-1);
                      lst.Add(new Staff{});
-                     Console.WriteLine("enter the stafftype");
-                     lst[lst.Count-1].stafftype=Console.ReadLine();
+                     lst[lst.Count-1].stafftype=j;
                      Console.WriteLine("enter the  name");
                      lst[lst.Count-1].name=Console.ReadLine();
                      Console.WriteLine("enter the phone no");
                      lst[lst.Count-1].phone=Console.ReadLine();
                      Console.WriteLine("enter the email id");
                      lst[lst.Count-1].email=Console.ReadLine();
-                     Console.WriteLine("enter the classname, if non teaching enter nil");
+                     if(j=="TEACHING_STAFF")
+                     {
+                     Console.WriteLine("enter the classname");
                      lst[lst.Count-1].classname=Console.ReadLine();
-                     Console.WriteLine("enter the subject taught, if non teaching enter nil");
+                     Console.WriteLine("enter the subject taught");
                      lst[lst.Count-1].subject=Console.ReadLine();
-                     lst[lst.Count-1].id=lst.Count;
+                     }
+                     else{
+                         lst[lst.Count-1].classname="NIL";
+                          lst[lst.Count-1].subject="NIL";
+                     }
+                     
                      break;
-                case 2:
+                case "2":
                       if(lst.Count==0)
                       Console.WriteLine("NO DATA ENTERED");
                       else{
-                        foreach(Staff s in lst)
-                        s.display();
+                            int i=0;
+                        foreach(Staff s in lst){
+                           i++;   
+                          Console.WriteLine("\nSTAFF ID:{0}",i);
+                          s.display();
+                        }
+                        
                       }
                       break;
-                case 3:
+                case "3":
                       Console.WriteLine("ENTER THE STAFF ID");
                       int a=Convert.ToInt32(Console.ReadLine());
                       if(a>lst.Count)
                       Console.WriteLine("NO STAFF WITH THIS ID");
-                      else
-                      lst[a-1].display();
+                      else{
+                        Console.WriteLine("\nSTAFFI ID:{0}",a);
+                        lst[a-1].display();
+                      }
                       break;
-                case 4:
+                case "4":
                       Console.WriteLine("ENTER THE STAFF ID");
                       int b=Convert.ToInt32(Console.ReadLine());
                       if(b>lst.Count)
@@ -55,18 +80,18 @@ namespace staffs
                           Console.WriteLine("entry deleted");
                       }
                        break;
-                case 5:
+                case "5":
                       Console.WriteLine("ENTER THE STAFF ID");
                       int c=Convert.ToInt32(Console.ReadLine());
                        if(c>lst.Count)
                       Console.WriteLine("NO STAFF AT THIS ID");
                       else{
                         lst[c-1].edit();
-                        lst[c-1].id=c;
+                          ;
                         Console.WriteLine("ENTRY EDITED");
                       }
                       break;
-                case 9:
+                case "9":
                       Console.WriteLine("PROGRAM ENDED");
                       break;
                 default:
@@ -74,7 +99,7 @@ namespace staffs
                        break;     
               }
             }
-            while(select!=9);
+            while(select!="9");
 
         }
     }
