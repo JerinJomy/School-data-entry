@@ -1,11 +1,12 @@
 using System;
+
 namespace Staffs
 {
-
     class Staff
     {
+
         public string Name { get; set; }
-        public string StaffType { get; set; }
+        public StaffType StaffType { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string ClassName { get; set; }
@@ -13,18 +14,18 @@ namespace Staffs
         public int Id { get; set; }
 
 
-        public Staff(string i, string a, string b, string c, string d, string e, int u)
+        public Staff(StaffType staffType, string name, string phone, string email, string classname, string subject, int id)
         {
-            StaffType = i;
-            Name = a;
-            Phone = b;
-            Email = c;
-            ClassName = d;
-            Subject = e;
-            Id = u;
+            StaffType = staffType;
+            Name = name;
+            Phone = phone;
+            Email = email;
+            ClassName = classname;
+            Subject = subject;
+            Id = id;
         }
 
-        public void display()
+        public void Display()
         {
             Console.WriteLine("\nSTAFFID:{0}", Id);
             Console.WriteLine("Staff :{0}", StaffType);
@@ -35,7 +36,7 @@ namespace Staffs
             Console.WriteLine("Subject:{0}", Subject);
 
         }
-        public void newdata(string j, string z, string y, string x, string w, string v, int u)
+        public void EnterData(StaffType j, string z, string y, string x, string w, string v, int u)
         {
 
             StaffType = j;
@@ -51,3 +52,4 @@ namespace Staffs
 
 
 }
+
