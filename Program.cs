@@ -14,13 +14,7 @@ namespace Staffs
                 switch (select)
                 {
                     case "1":
-                        Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
-                        string stype = Console.ReadLine();
-                        if (stype != "1" && stype != "2" && stype != "3")
-                        {
-                            goto default;
-                        }
-                        EnterData(stype, null);
+                        EnterData( null);
                         break;
                     case "2":
                         Operation.view();
@@ -38,13 +32,7 @@ namespace Staffs
                     case "5":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idu = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
-                        string stype2 = Console.ReadLine();
-                        if (stype2 != "1" && stype2 != "2" && stype2 != "3")
-                        {
-                            goto default;
-                        }
-                        EnterData(stype2, idu);
+                        EnterData( idu);
                         break;
                     case "9":
                         Console.WriteLine("PROGRAM ENDED");
@@ -57,39 +45,49 @@ namespace Staffs
             while (select != "9");
 
         }
-        static void EnterData(string st, int? c)
+        static void EnterData( int? c)
         {
+            Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
+            string stype = Console.ReadLine();
+            try
+            {
+                StaffType stafftype = (StaffType)int.Parse(stype) - 1;
+                Console.WriteLine("enter the  name");
+                string name = Console.ReadLine();
+                Console.WriteLine("enter the phone no");
+                string phone = Console.ReadLine();
+                Console.WriteLine("enter the email id");
+                string email = Console.ReadLine();
+                string classname, subject;
+                if (stafftype == StaffType.TEACHINGSTAFF)
+                {
+                    Console.WriteLine("enter the classname");
+                    classname = Console.ReadLine();
+                    Console.WriteLine("enter the subject taught");
+                    subject = Console.ReadLine();
+                }
+                else
+                {
+                    classname = null;
+                    subject = null;
+                }
+                if (c == null)
+                {
+                    int id = Operation.IdValue() + 1;
+                    Operation.Addata(stafftype, name, phone, email, classname, subject, id);
+                }
+                else
+                {
+                    int id = c.GetValueOrDefault();
+                    Operation.Update(stafftype, name, phone, email, classname, subject, id);
+                }
 
-            StaffType stafftype = (StaffType)int.Parse(st) - 1;
-            Console.WriteLine("enter the  name");
-            string name = Console.ReadLine();
-            Console.WriteLine("enter the phone no");
-            string phone = Console.ReadLine();
-            Console.WriteLine("enter the email id");
-            string email = Console.ReadLine();
-            string classname, subject;
-            if (stafftype == StaffType.TEACHINGSTAFF)
-            {
-                Console.WriteLine("enter the classname");
-                classname = Console.ReadLine();
-                Console.WriteLine("enter the subject taught");
-                subject = Console.ReadLine();
             }
-            else
-            {
-                classname = null;
-                subject = null;
+            catch{
+                Console.WriteLine("INVALID OPTION");
             }
-            if (c == null)
-            {
-                int id = Operation.IdValue() + 1;
-                Operation.Addata(stafftype, name, phone, email, classname, subject, id);
-            }
-            else
-            {
-                int id = c.GetValueOrDefault();
-                Operation.Update(stafftype, name, phone, email, classname, subject, id);
-            }
+
+
 
         }
     }

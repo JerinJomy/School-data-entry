@@ -32,20 +32,20 @@ namespace Staffs
             Console.WriteLine("Name :{0}", Name);
             Console.WriteLine("Phone no :{0}", Phone);
             Console.WriteLine("email id :{0}", Email);
-            Console.WriteLine("class name:{0}", ClassName);
-            Console.WriteLine("Subject:{0}", Subject);
+            Console.WriteLine("class name:{0}", ClassName!=null? ClassName:"Nil");
+            Console.WriteLine("Subject:{0}", Subject!=null?ClassName:"Nil");
 
         }
-        public void EnterData(StaffType j, string z, string y, string x, string w, string v, int u)
+        public void EnterData(StaffType stafftype, string name, string phone, string email, string classname, string subject, int id)
         {
 
-            StaffType = j;
-            Name = z;
-            Phone = y;
-            Email = x;
-            ClassName = w;
-            Subject = v;
-            Id = u;
+            StaffType = stafftype;
+            Name = name;
+            Phone = phone;
+            Email = email;
+            ClassName = classname;
+            Subject = subject;
+            Id = id;
         }
 
     }

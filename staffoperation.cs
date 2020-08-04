@@ -39,9 +39,9 @@ namespace Staffs
                     s.Display();
             }
         }
-        public static void Delete(int b)
+        public static void Delete(int idd)
         {
-            int index = lst.FindIndex(s => (s.Id == b));
+            int index = lst.FindIndex(s => (s.Id == idd));
             if (index == -1)
                 Console.WriteLine("NO STAFF AT THIS ID");
             else
