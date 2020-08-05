@@ -3,7 +3,7 @@ namespace Staffs
 {
     enum StaffType
     {
-        TEACHINGSTAFF,
+        TEACHINGSTAFF=1,
         ADMINISTRATIVESTAFF,
         SUPPORTSTAFF
     }

@@ -32,8 +32,8 @@ namespace Staffs
             Console.WriteLine("Name :{0}", Name);
             Console.WriteLine("Phone no :{0}", Phone);
             Console.WriteLine("email id :{0}", Email);
-            Console.WriteLine("class name:{0}", ClassName!=null? ClassName:"Nil");
-            Console.WriteLine("Subject:{0}", Subject!=null?ClassName:"Nil");
+            Console.WriteLine("class name:{0}", ClassName != null ? ClassName : "Nil");
+            Console.WriteLine("Subject:{0}", Subject != null ? ClassName : "Nil");
 
         }
         public void EnterData(StaffType stafftype, string name, string phone, string email, string classname, string subject, int id)

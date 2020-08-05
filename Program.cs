@@ -14,25 +14,25 @@ namespace Staffs
                 switch (select)
                 {
                     case "1":
-                        EnterData( null);
+                        EnterData(null);
                         break;
                     case "2":
-                        Operation.view();
+                        StaffOperation.view();
                         break;
                     case "3":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idv = Convert.ToInt32(Console.ReadLine());
-                        Operation.ViewOne(idv);
+                        StaffOperation.ViewOne(idv);
                         break;
                     case "4":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idd = Convert.ToInt32(Console.ReadLine());
-                        Operation.Delete(idd);
+                        StaffOperation.Delete(idd);
                         break;
                     case "5":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idu = Convert.ToInt32(Console.ReadLine());
-                        EnterData( idu);
+                        EnterData(idu);
                         break;
                     case "9":
                         Console.WriteLine("PROGRAM ENDED");
@@ -45,13 +45,13 @@ namespace Staffs
             while (select != "9");
 
         }
-        static void EnterData( int? c)
+        static void EnterData(int? c)
         {
             Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
             string stype = Console.ReadLine();
             try
             {
-                StaffType stafftype = (StaffType)int.Parse(stype) - 1;
+                StaffType stafftype = (StaffType)int.Parse(stype) ;
                 Console.WriteLine("enter the  name");
                 string name = Console.ReadLine();
                 Console.WriteLine("enter the phone no");
@@ -73,17 +73,18 @@ namespace Staffs
                 }
                 if (c == null)
                 {
-                    int id = Operation.IdValue() + 1;
-                    Operation.Addata(stafftype, name, phone, email, classname, subject, id);
+                    int id = StaffOperation.IdValue() + 1;
+                    StaffOperation.Addata(stafftype, name, phone, email, classname, subject, id);
                 }
                 else
                 {
                     int id = c.GetValueOrDefault();
-                    Operation.Update(stafftype, name, phone, email, classname, subject, id);
+                    StaffOperation.Update(stafftype, name, phone, email, classname, subject, id);
                 }
 
             }
-            catch{
+            catch
+            {
                 Console.WriteLine("INVALID OPTION");
             }
 
