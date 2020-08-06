@@ -47,14 +47,20 @@ namespace Staffs
                     classname = Console.ReadLine();
                     Console.WriteLine("enter the subject taught");
                     subject = Console.ReadLine();
+                    int id = StaffOperation.IdValue();
+                    StaffList.Add(new TeachingStaffs(stafftype, name, phone, email, classname, subject, id));
                 }
-                else
+                else if (stafftype == StaffType.ADMINISTRATIVESTAFF)
                 {
-                    classname = null;
-                    subject = null;
+                    int id = StaffOperation.IdValue();
+                    StaffList.Add(new AdministrativeStaff(stafftype, name, phone, email, id));
                 }
-                int id = StaffOperation.IdValue();
-                StaffList.Add(new Staff(stafftype, name, phone, email, classname, subject, id));
+                else if (stafftype == StaffType.SUPPORTSTAFF)
+                {
+                    int id = StaffOperation.IdValue();
+                    StaffList.Add(new SupportStaffs(stafftype, name, phone, email, id));
+                }
+
 
             }
             catch
@@ -92,43 +98,10 @@ namespace Staffs
             }
             else
             {
-                Console.WriteLine("enter '1' for Teaching Staff\nenter '2' for Administrative Staff\nenter '3' for Support Staff");
-                string stype = Console.ReadLine();
-                try
-                {
-                    StaffType stafftype = (StaffType)int.Parse(stype);
-                    Console.WriteLine("enter the  name");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("enter the phone no");
-                    string phone = Console.ReadLine();
-                    Console.WriteLine("enter the email id");
-                    string email = Console.ReadLine();
-                    string classname, subject;
-                    if (stafftype == StaffType.TEACHINGSTAFF)
-                    {
-                        Console.WriteLine("enter the classname");
-                        classname = Console.ReadLine();
-                        Console.WriteLine("enter the subject taught");
-                        subject = Console.ReadLine();
-                    }
-                    else
-                    {
-                        classname = null;
-                        subject = null;
-                    }
-                    int id = idu;
-                    StaffList[index].EnterData(stafftype, name, phone, email, classname, subject, id);
-                    Console.WriteLine("ENTRY EDITED");
-                }
-                catch
-                {
-                    Console.WriteLine("INVALID OPTION");
-                }
-
+                StaffList[index].Update();
+                Console.WriteLine("ENTRY EDITED");
             }
-
         }
-
         public static void Delete(int idd)
         {
             int index = StaffList.FindIndex(s => (s.Id == idd));
@@ -140,7 +113,10 @@ namespace Staffs
                 Console.WriteLine("entry deleted");
             }
         }
+
     }
+
 }
+
 
 
