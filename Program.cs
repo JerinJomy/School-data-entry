@@ -14,25 +14,25 @@ namespace Staffs
                 switch (select)
                 {
                     case "1":
-                        StaffOperation.EnterData();
+                        StaffOperations.EnterData();
                         break;
                     case "2":
-                        StaffOperation.View();
+                        StaffOperations.View();
                         break;
                     case "3":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idv = Convert.ToInt32(Console.ReadLine());
-                        StaffOperation.ViewOne(idv);
+                        StaffOperations.ViewOne(idv);
                         break;
                     case "4":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idd = Convert.ToInt32(Console.ReadLine());
-                        StaffOperation.Delete(idd);
+                        StaffOperations.Delete(idd);
                         break;
                     case "5":
                         Console.WriteLine("ENTER THE STAFF id");
                         int idu = Convert.ToInt32(Console.ReadLine());
-                        StaffOperation.UpdateData(idu);
+                        StaffOperations.UpdateData(idu);
                         break;
                     case "9":
                         Console.WriteLine("PROGRAM ENDED");
