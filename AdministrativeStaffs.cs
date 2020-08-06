@@ -27,7 +27,6 @@ namespace Staffs
             Phone = Console.ReadLine();
             Console.WriteLine("enter the email id");
             Email = Console.ReadLine();
-            Console.WriteLine("enter the class name");
         }
     }
 }

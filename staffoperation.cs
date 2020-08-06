@@ -21,7 +21,9 @@ namespace Staffs
                 foreach (Staff s in StaffList)
                 {
                     if (s.Id > largest)
+                    {
                         largest = s.Id;
+                    }
                 }
                 return largest + 1;
             }
@@ -69,14 +71,20 @@ namespace Staffs
             }
         }
 
-        public static void view()
+        public static void View()
         {
             if (StaffList.Count < 1)
+            {
                 Console.WriteLine("NO DATA ENTERED");
+            }
+
             else
             {
                 foreach (Staff s in StaffList)
+                {
                     s.Display();
+                }
+                    
             }
         }
 
@@ -84,9 +92,13 @@ namespace Staffs
         {
             Staff staff = StaffList.FirstOrDefault(x => x.Id == a);
             if (staff == null)
+            {
                 Console.WriteLine("NO STAFF WITH THIS ID");
+            }
             else
+            {
                 staff.Display();
+            }
         }
 
         public static void UpdateData(int idu)
@@ -106,7 +118,10 @@ namespace Staffs
         {
             int index = StaffList.FindIndex(s => (s.Id == idd));
             if (index == -1)
+            {
                 Console.WriteLine("NO STAFF AT THIS ID");
+            }
+
             else
             {
                 StaffList.RemoveAt(index);

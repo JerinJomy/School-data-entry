@@ -17,7 +17,7 @@ namespace Staffs
                         StaffOperation.EnterData();
                         break;
                     case "2":
-                        StaffOperation.view();
+                        StaffOperation.View();
                         break;
                     case "3":
                         Console.WriteLine("ENTER THE STAFF id");
